@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\EstudianteController;
 use App\Http\Controllers\LoginController;
 use Illuminate\Support\Facades\Route;
 
@@ -11,7 +12,9 @@ Route::post('/login', [LoginController::class, 'store'])
     ->name('login.store');
 
 Route::middleware('auth')->group(function () {
-    Route::view('/inicio', 'inicio')->name('inicio');
+    Route::get('/inicio', fn () => redirect()->route('estudiantes.index'))->name('inicio');
+
+    Route::get('/estudiantes', [EstudianteController::class, 'index'])->name('estudiantes.index');
 
     Route::post('/logout', [LoginController::class, 'destroy'])->name('logout');
 });
