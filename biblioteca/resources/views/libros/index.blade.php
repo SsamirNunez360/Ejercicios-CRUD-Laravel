@@ -14,6 +14,7 @@
                 <th>Título</th>
                 <th>Autor</th>
                 <th>Año de publicación</th>
+                <th>Acciones</th>
             </tr>
         </thead>
         <tbody>
@@ -24,10 +25,11 @@
                     <td>{{ $libro->titulo }}</td>
                     <td>{{ $libro->autor }}</td>
                     <td>{{ $libro->anio_publicacion }}</td>
+                    <td><a href="{{ route('libros.edit', $libro->id) }}">Editar</a></td>
                 </tr>
             @empty
                 <tr>
-                    <td colspan="5" class="vacio">No hay libros registrados.</td>
+                    <td colspan="6" class="vacio">No hay libros registrados.</td>
                 </tr>
             @endforelse
         </tbody>
