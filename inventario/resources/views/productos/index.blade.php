@@ -4,6 +4,7 @@
 
 @section('contenido')
     <h1>Inventario de productos</h1>
+    <p><a class="boton" href="{{ route('productos.create') }}">Crear producto</a></p>
 
     <table>
         <thead>
