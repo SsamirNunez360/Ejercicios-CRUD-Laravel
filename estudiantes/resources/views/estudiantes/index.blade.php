@@ -14,6 +14,7 @@
                 <th>Nombre</th>
                 <th>Correo</th>
                 <th>Fecha de nacimiento</th>
+                <th>Acciones</th>
             </tr>
         </thead>
         <tbody>
@@ -24,10 +25,11 @@
                     <td>{{ $estudiante->nombre }}</td>
                     <td>{{ $estudiante->correo }}</td>
                     <td>{{ $estudiante->fecha_nacimiento->format('d/m/Y') }}</td>
+                    <td><a href="{{ route('estudiantes.edit', $estudiante->id) }}">Editar</a></td>
                 </tr>
             @empty
                 <tr>
-                    <td colspan="5" class="vacio">No hay estudiantes registrados.</td>
+                    <td colspan="6" class="vacio">No hay estudiantes registrados.</td>
                 </tr>
             @endforelse
         </tbody>
