@@ -4,6 +4,7 @@
 
 @section('contenido')
     <h1>Registro de estudiantes</h1>
+    <p><a class="boton" href="{{ route('estudiantes.create') }}">Crear estudiante</a></p>
 
     <table>
         <thead>

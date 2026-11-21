@@ -15,6 +15,8 @@ Route::middleware('auth')->group(function () {
     Route::get('/inicio', fn () => redirect()->route('estudiantes.index'))->name('inicio');
 
     Route::get('/estudiantes', [EstudianteController::class, 'index'])->name('estudiantes.index');
+    Route::get('/estudiantes/crear', [EstudianteController::class, 'create'])->name('estudiantes.create');
+    Route::post('/estudiantes', [EstudianteController::class, 'store'])->name('estudiantes.store');
 
     Route::post('/logout', [LoginController::class, 'destroy'])->name('logout');
 });
