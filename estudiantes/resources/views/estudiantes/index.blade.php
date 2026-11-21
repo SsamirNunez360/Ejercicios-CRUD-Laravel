@@ -25,7 +25,16 @@
                     <td>{{ $estudiante->nombre }}</td>
                     <td>{{ $estudiante->correo }}</td>
                     <td>{{ $estudiante->fecha_nacimiento->format('d/m/Y') }}</td>
-                    <td><a href="{{ route('estudiantes.edit', $estudiante->id) }}">Editar</a></td>
+                    <td>
+                        <a href="{{ route('estudiantes.edit', $estudiante->id) }}">Editar</a>
+                        <form method="POST" action="{{ route('estudiantes.destroy', $estudiante->id) }}"
+                              style="display:inline"
+                              onsubmit="return confirm('¿Eliminar este estudiante?');">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit">Eliminar</button>
+                        </form>
+                    </td>
                 </tr>
             @empty
                 <tr>
