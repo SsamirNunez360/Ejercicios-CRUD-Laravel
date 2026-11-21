@@ -14,6 +14,7 @@
                 <th>Nombre</th>
                 <th>Precio</th>
                 <th>Existencias</th>
+                <th>Acciones</th>
             </tr>
         </thead>
         <tbody>
@@ -28,10 +29,11 @@
                         @else
                             {{ $producto->existencias }}
                         @endif</td>
+                    <td><a href="{{ route('productos.edit', $producto->id) }}">Editar</a></td>
                 </tr>
             @empty
                 <tr>
-                    <td colspan="5" class="vacio">No hay productos registrados.</td>
+                    <td colspan="6" class="vacio">No hay productos registrados.</td>
                 </tr>
             @endforelse
         </tbody>

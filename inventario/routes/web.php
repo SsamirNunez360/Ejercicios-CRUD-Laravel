@@ -17,6 +17,12 @@ Route::middleware('auth')->group(function () {
     Route::get('/productos', [ProductoController::class, 'index'])->name('productos.index');
     Route::get('/productos/crear', [ProductoController::class, 'create'])->name('productos.create');
     Route::post('/productos', [ProductoController::class, 'store'])->name('productos.store');
+    Route::get('/productos/{id}/editar', [ProductoController::class, 'edit'])
+        ->whereNumber('id')
+        ->name('productos.edit');
+    Route::put('/productos/{id}', [ProductoController::class, 'update'])
+        ->whereNumber('id')
+        ->name('productos.update');
 
     Route::post('/logout', [LoginController::class, 'destroy'])->name('logout');
 });
