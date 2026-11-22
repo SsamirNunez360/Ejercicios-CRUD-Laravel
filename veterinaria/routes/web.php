@@ -15,6 +15,8 @@ Route::middleware('auth')->group(function () {
     Route::get('/inicio', fn () => redirect()->route('mascotas.index'))->name('inicio');
 
     Route::get('/mascotas', [MascotaController::class, 'index'])->name('mascotas.index');
+    Route::get('/mascotas/crear', [MascotaController::class, 'create'])->name('mascotas.create');
+    Route::post('/mascotas', [MascotaController::class, 'store'])->name('mascotas.store');
 
     Route::post('/logout', [LoginController::class, 'destroy'])->name('logout');
 });
