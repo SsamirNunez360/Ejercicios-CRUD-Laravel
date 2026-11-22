@@ -23,6 +23,9 @@ Route::middleware('auth')->group(function () {
     Route::put('/mascotas/{id}', [MascotaController::class, 'update'])
         ->whereNumber('id')
         ->name('mascotas.update');
+    Route::delete('/mascotas/{id}', [MascotaController::class, 'destroy'])
+        ->whereNumber('id')
+        ->name('mascotas.destroy');
 
     Route::post('/logout', [LoginController::class, 'destroy'])->name('logout');
 });

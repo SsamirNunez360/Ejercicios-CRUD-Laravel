@@ -27,7 +27,16 @@
                     <td>{{ ucfirst($mascota->especie) }}</td>
                     <td>{{ $mascota->propietario }}</td>
                     <td>{{ $mascota->fecha_nacimiento->format('d/m/Y') }}</td>
-                    <td><a href="{{ route('mascotas.edit', $mascota->id) }}">Editar</a></td>
+                    <td>
+                        <a href="{{ route('mascotas.edit', $mascota->id) }}">Editar</a>
+                        <form method="POST" action="{{ route('mascotas.destroy', $mascota->id) }}"
+                              style="display:inline"
+                              onsubmit="return confirm('¿Eliminar esta mascota?');">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit">Eliminar</button>
+                        </form>
+                    </td>
                 </tr>
             @empty
                 <tr>
