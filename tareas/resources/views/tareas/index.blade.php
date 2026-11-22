@@ -15,6 +15,7 @@
                 <th>Descripción</th>
                 <th>Fecha límite</th>
                 <th>Estado</th>
+                <th>Acciones</th>
             </tr>
         </thead>
         <tbody>
@@ -26,10 +27,11 @@
                     <td>{{ $tarea->descripcion ?: '—' }}</td>
                     <td>{{ $tarea->fecha_limite->format('d/m/Y') }}</td>
                     <td>{{ ucfirst(str_replace('_', ' ', $tarea->estado)) }}</td>
+                    <td><a href="{{ route('tareas.edit', $tarea->id) }}">Editar</a></td>
                 </tr>
             @empty
                 <tr>
-                    <td colspan="6" class="vacio">No hay tareas registradas.</td>
+                    <td colspan="7" class="vacio">No hay tareas registradas.</td>
                 </tr>
             @endforelse
         </tbody>
