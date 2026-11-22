@@ -27,7 +27,16 @@
                     <td>{{ $tarea->descripcion ?: '—' }}</td>
                     <td>{{ $tarea->fecha_limite->format('d/m/Y') }}</td>
                     <td>{{ ucfirst(str_replace('_', ' ', $tarea->estado)) }}</td>
-                    <td><a href="{{ route('tareas.edit', $tarea->id) }}">Editar</a></td>
+                    <td>
+                        <a href="{{ route('tareas.edit', $tarea->id) }}">Editar</a>
+                        <form method="POST" action="{{ route('tareas.destroy', $tarea->id) }}"
+                              style="display:inline"
+                              onsubmit="return confirm('¿Eliminar esta tarea?');">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit">Eliminar</button>
+                        </form>
+                    </td>
                 </tr>
             @empty
                 <tr>
