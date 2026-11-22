@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\MascotaController;
 use Illuminate\Support\Facades\Route;
 
 Route::redirect('/', '/login');
@@ -11,7 +12,9 @@ Route::post('/login', [LoginController::class, 'store'])
     ->name('login.store');
 
 Route::middleware('auth')->group(function () {
-    Route::view('/inicio', 'inicio')->name('inicio');
+    Route::get('/inicio', fn () => redirect()->route('mascotas.index'))->name('inicio');
+
+    Route::get('/mascotas', [MascotaController::class, 'index'])->name('mascotas.index');
 
     Route::post('/logout', [LoginController::class, 'destroy'])->name('logout');
 });
