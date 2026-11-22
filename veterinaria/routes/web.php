@@ -17,6 +17,12 @@ Route::middleware('auth')->group(function () {
     Route::get('/mascotas', [MascotaController::class, 'index'])->name('mascotas.index');
     Route::get('/mascotas/crear', [MascotaController::class, 'create'])->name('mascotas.create');
     Route::post('/mascotas', [MascotaController::class, 'store'])->name('mascotas.store');
+    Route::get('/mascotas/{id}/editar', [MascotaController::class, 'edit'])
+        ->whereNumber('id')
+        ->name('mascotas.edit');
+    Route::put('/mascotas/{id}', [MascotaController::class, 'update'])
+        ->whereNumber('id')
+        ->name('mascotas.update');
 
     Route::post('/logout', [LoginController::class, 'destroy'])->name('logout');
 });
